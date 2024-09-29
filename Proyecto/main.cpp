@@ -1,33 +1,35 @@
-#include "piloto.h"
-#include "analizador.h"
+#ifndef TIEMPOS_H
+#define TIEMPOS_H
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-int main() {
-    vector<Piloto> pilotos = {
-        Piloto("Juan", 7, 30.5, 32.1, 29.8),
-        Piloto("Pedro", 5, 31.2, 31.5, 30.0),
-        Piloto("Luis", 3, 30.0, 32.0, 29.5)
-    };
+class Tiempo {
+private:
+    double sector_1;
+    double sector_2;
+    double sector_3;
+    double tiempo;
 
-    Analizador::determinarPosiciones(pilotos);
+public:
+    Tiempo(double t1, double t2, double t3) : sector_1(t1), sector_2(t2), sector_3(t3), tiempo(t1 + t2 + t3) {}
 
-    Piloto* vueltaRapida = Analizador::vueltaRapida(pilotos);
-    Piloto* mejorSector1 = Analizador::mejorSector1(pilotos);
-    Piloto* mejorSector2 = Analizador::mejorSector2(pilotos);
-    Piloto* mejorSector3 = Analizador::mejorSector3(pilotos);
+    double getTiempo() const { return tiempo; }
 
-    cout << "Vuelta Rápida: " << vueltaRapida->getNombre() << " con tiempo " << vueltaRapida->getTiempoTotal() << endl;
-    cout << "Mejor Sector 1: " << mejorSector1->getNombre() << " con tiempo " << mejorSector1->getSector1() << endl;
-    cout << "Mejor Sector 2: " << mejorSector2->getNombre() << " con tiempo " << mejorSector2->getSector2() << endl;
-    cout << "Mejor Sector 3: " << mejorSector3->getNombre() << " con tiempo " << mejorSector3->getSector3() << endl;
+    void setSector1(double t1) { sector_1 = t1; updateTiempo(); }
+    void setSector2(double t2) { sector_2 = t2; updateTiempo(); }
+    void setSector3(double t3) { sector_3 = t3; updateTiempo(); }
 
-    for (const auto& piloto : pilotos) {
-        cout << "Nombre: " << piloto.getNombre() << ", Número: " << piloto.getNumero()
-             << ", Tiempo Total: " << piloto.getTiempoTotal() << ", Posición: " << piloto.getPosicion() << endl;
+    double getSector1() const { return sector_1; }
+    double getSector2() const { return sector_2; }
+    double getSector3() const { return sector_3; }
+
+private:
+    void updateTiempo() {
+        tiempo = sector_1 + sector_2 + sector_3;
     }
+};
 
-    return 0;
-}
+#endif
