@@ -23,27 +23,27 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 3. Compila el programa utilizando el siguiente comando:
    ```sh
    g++ -o clasificacion_f1 main.cpp
-##Competencias 
-##SICT0302B: Toma decisiones
-#Selecciona y usa una estructura lineal adecuada al problema
+## Competencias 
+## SICT0302B: Toma decisiones
+# Selecciona y usa una estructura lineal adecuada al problema
 
 
-#Selecciona un algoritmo de ordenamiento adecuado al problema
+# Selecciona un algoritmo de ordenamiento adecuado al problema
 
-#Usa un árbol adecuado para resolver un problema
+# Usa un árbol adecuado para resolver un problema
 
-##SICT0301B: Evalúa los componentes
-#Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
-
-
-#Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes
-
-##SICT0303B: Implementa acciones científicas
-
-#Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
+##  SICT0301B: Evalúa los componentes
+# Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
 
 
-#Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
+# Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes
+
+## SICT0303B: Implementa acciones científicas
+
+# Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
 
 
-#Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. Usar de manera
+# Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
+
+
+# Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. Usar de manera
