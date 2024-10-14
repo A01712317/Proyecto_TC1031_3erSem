@@ -11,18 +11,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 - La vuelta más rápida.
 - Las posiciones finales de los pilotos.
 
-## Requisitos
 
-- Compilador de C++ compatible con C++11 o superior.
-- Archivo de texto con los detalles de los pilotos.
-
-## Instalación
-
-1. Clona este repositorio en tu máquina local.
-2. Asegúrate de tener un compilador de C++ instalado.
-3. Compila el programa utilizando el siguiente comando:
-   ```sh
-   g++ -o clasificacion_f1 main.cpp
 ## Competencias 
 
 ### SICT0302B: Toma decisiones
