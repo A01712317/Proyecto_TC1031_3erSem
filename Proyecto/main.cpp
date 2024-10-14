@@ -1,35 +1,59 @@
-#ifndef TIEMPOS_H
-#define TIEMPOS_H
-
+#include "piloto.h"
+#include "analizador.h"
+#include "bst.h"
 #include <iostream>
+#include <fstream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
-class Tiempo {
-private:
-    double sector_1;
-    double sector_2;
-    double sector_3;
-    double tiempo;
+int main() {
+    vector<Piloto> pilotos;
+    string filename = "pilotos.txt";
+    ifstream archivo(filename);
 
-public:
-    Tiempo(double t1, double t2, double t3) : sector_1(t1), sector_2(t2), sector_3(t3), tiempo(t1 + t2 + t3) {}
-
-    double getTiempo() const { return tiempo; }
-
-    void setSector1(double t1) { sector_1 = t1; updateTiempo(); }
-    void setSector2(double t2) { sector_2 = t2; updateTiempo(); }
-    void setSector3(double t3) { sector_3 = t3; updateTiempo(); }
-
-    double getSector1() const { return sector_1; }
-    double getSector2() const { return sector_2; }
-    double getSector3() const { return sector_3; }
-
-private:
-    void updateTiempo() {
-        tiempo = sector_1 + sector_2 + sector_3;
+    if (!archivo.is_open()) {
+        cerr << "Error al abrir el archivo: " << filename << endl;
+        return 1;
     }
-};
 
-#endif
+    string nombre;
+    int numero;
+    double sector1, sector2, sector3;
+
+    // Leer datos desde el archivo y crear objetos Piloto
+    while (archivo >> nombre >> numero >> sector1 >> sector2 >> sector3) {
+        pilotos.emplace_back(nombre, numero, sector1, sector2, sector3);
+    }
+
+    archivo.close();
+
+    Analizador::determinarPosiciones(pilotos);
+    const Piloto* vueltaRapida = Analizador::vueltaRapida(pilotos);
+    const Piloto* mejorSector1 = Analizador::mejorSector1(pilotos);
+    const Piloto* mejorSector2 = Analizador::mejorSector2(pilotos);
+    const Piloto* mejorSector3 = Analizador::mejorSector3(pilotos);
+
+    cout << "Pole position: " << vueltaRapida->getNombre() << " con tiempo " << vueltaRapida->getTiempoTotal() << endl;
+    cout << "Mejor Sector 1: " << mejorSector1->getNombre() << " con tiempo " << mejorSector1->getSector1() << endl;
+    cout << "Mejor Sector 2: " << mejorSector2->getNombre() << " con tiempo " << mejorSector2->getSector2() << endl;
+    cout << "Mejor Sector 3: " << mejorSector3->getNombre() << " con tiempo " << mejorSector3->getSector3() << endl;
+
+    // Crear el árbol BST y agregar los tiempos totales de cada piloto
+    BST<double> tiemposBST;
+    for (const auto& piloto : pilotos) {
+        tiemposBST.add(piloto.getTiempoTotal());
+    }
+
+    cout << "\nRecorridos del BST:\n";
+    cout << tiemposBST.visit() << endl;
+
+    cout << "\nInformación de cada piloto:\n";
+    for (const auto& piloto : pilotos) {
+        cout << "Nombre: " << piloto.getNombre() << ", Número: " << piloto.getNumero()
+             << ", Tiempo Total: " << piloto.getTiempoTotal() << ", Posición: " << piloto.getPosicion() << endl;
+    }
+
+    return 0;
+}

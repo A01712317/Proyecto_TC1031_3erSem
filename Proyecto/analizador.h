@@ -5,11 +5,15 @@
 #include <algorithm>
 #include <limits>
 #include <vector>
+#include <unordered_map>
 
 class Analizador {
 public:
     static void determinarPosiciones(vector<Piloto>& pilotos) {
         mergeSort(pilotos, 0, pilotos.size() - 1);
+
+        // Eliminar pilotos duplicados
+        eliminarDuplicados(pilotos);
 
         for (size_t i = 0; i < pilotos.size(); ++i) {
             pilotos[i].setPosicion(i + 1);
@@ -39,7 +43,6 @@ public:
             return a.getSector3() < b.getSector3();
         }));
     }
-
 
 private:
     static void merge(vector<Piloto>& pilotos, int left, int mid, int right) {
@@ -88,6 +91,26 @@ private:
 
             merge(pilotos, left, mid, right);
         }
+    }
+
+    static void eliminarDuplicados(vector<Piloto>& pilotos) {
+        unordered_map<string, Piloto> mapaPilotos;
+
+        for (const auto& piloto : pilotos) {
+            string clave = piloto.getNombre() + std::to_string(piloto.getNumero());
+            if (mapaPilotos.find(clave) == mapaPilotos.end() || 
+                piloto.getTiempoTotal() < mapaPilotos[clave].getTiempoTotal()) {
+                mapaPilotos[clave] = piloto;
+            }
+        }
+
+        pilotos.clear();
+        for (auto it = mapaPilotos.begin(); it != mapaPilotos.end(); ++it) {
+            pilotos.push_back(it->second);
+        }
+
+        // Ordenar nuevamente después de eliminar duplicados
+        mergeSort(pilotos, 0, pilotos.size() - 1);
     }
 };
 
