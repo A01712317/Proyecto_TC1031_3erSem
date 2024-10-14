@@ -25,7 +25,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
    g++ -o clasificacion_f1 main.cpp
 ## Competencias 
 ## SICT0302B: Toma decisiones
-### Selecciona y usa una estructura lineal adecuada al problema
+### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
 
 
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
@@ -34,9 +34,9 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 ##  SICT0301B: Evalúa los componentes
 ### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
+### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
 
 
-### Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes
 
 ## SICT0303B: Implementa acciones científicas
 
