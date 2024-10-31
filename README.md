@@ -10,7 +10,8 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 - El piloto con el mejor tiempo en cada sector.
 - La vuelta más rápida.
 - Las posiciones finales de los pilotos.
-
+  
+g++ -std=c++11 main.cpp
 
 ## Competencias 
 
