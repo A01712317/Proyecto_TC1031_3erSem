@@ -87,7 +87,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 1. **Compilación**:
    - Asegúrate de tener un compilador compatible con C++11 o superior. Utiliza el siguiente comando para compilar:
      ```bash
-     g++ -std=c++11 main.cpp -o clasificacion
+     g++ -std=c++11 main.cpp -o main
      ```
 
 2. **Ejecución**:
@@ -101,10 +101,6 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
      Sergio Perez 11 1.26 1.27 1.28
      ```
 
-   - Ejecuta el programa:
-     ```bash
-     ./clasificacion
-     ```
 
    - Los resultados se mostrarán en la terminal, con los pilotos ordenados por tiempos y la información adicional solicitada (mejores sectores, vuelta rápida, posiciones). 
 
