@@ -91,6 +91,10 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
      ```
 
 2. **Ejecución**:
+
+    ```bash
+     ./calculos
+     ```
    - Asegúrate de tener un archivo de entrada `pilotos.txt` en el mismo directorio que el ejecutable. El archivo debe tener la siguiente estructura para cada piloto:
      ```text
      Nombre Numero Sector1 Sector2 Sector3
@@ -101,9 +105,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
      Sergio Perez 11 1.26 1.27 1.28
      ```
 
-     ```bash
-     ./calculos
-     ```
+    
 
 
    - Los resultados se mostrarán en la terminal, con los pilotos ordenados por tiempos y la información adicional solicitada (mejores sectores, vuelta rápida, posiciones). 
