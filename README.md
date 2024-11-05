@@ -87,7 +87,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 1. **Compilación**:
    - Asegúrate de tener un compilador compatible con C++11 o superior. Utiliza el siguiente comando para compilar:
      ```bash
-     g++ -std=c++11 main.cpp -o main
+     g++ -std=c++11 main.cpp -o calculos
      ```
 
 2. **Ejecución**:
@@ -99,6 +99,10 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
      ```
      Max Verstappen 1 1.23 1.24 1.25
      Sergio Perez 11 1.26 1.27 1.28
+     ```
+
+     ```bash
+     ./calculos
      ```
 
 
