@@ -17,6 +17,15 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 ## Competencias 
 
+### SICT0303: Implementa acciones científicas
+
+#### Mecanismos de Escritura en Archivos
+
+
+---
+
+Estas adiciones aseguran que el README documente completamente la funcionalidad y la eficiencia del programa, proporcionando claridad sobre la complejidad y la utilidad de cada componente.
+
 ### SICT0302B: Toma decisiones
 
 #### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
@@ -30,6 +39,8 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 - **Justificación**: El BST permite una búsqueda eficiente, así como una forma ordenada de recorrer y visualizar los tiempos totales de los pilotos en diferentes formas (preorden, inorden, postorden y por niveles), facilitando el análisis y consulta de datos.
 
 ### SICT0301B: Evalúa los componentes
+
+- **Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`merge sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n \log n)\), que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
 
 #### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
 - **Casos de Prueba**:
@@ -78,7 +89,8 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 - **Lectura de Archivos**: Se implementó la lectura de archivos de texto para cargar la información de los pilotos, lo que permite una fácil actualización y modificación de los datos sin cambiar el código. Esto asegura la flexibilidad y reutilización del programa.
 
 #### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa.
-- **Escritura de Archivos (opcional)**: Aunque no se implementó en el ejemplo actual, se podría agregar la capacidad de escribir los resultados (como los tiempos de vuelta y las posiciones finales de los pilotos) en un archivo de texto, facilitando el análisis y guardado de información. 
+- **El programa implementa mecanismos para escribir los datos procesados en un archivo de salida `resultados.txt`, donde se guarda la información de los mejores tiempos por sector y el listado completo de los pilotos, sus tiempos y posiciones. Este mecanismo permite el almacenamiento de resultados de manera organizada y reutilizable, facilitando su uso posterior para el análisis o para compartir los resultados.
+
 
 ---
 
