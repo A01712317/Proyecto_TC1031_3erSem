@@ -1,0 +1,26 @@
+Pole position: Kevin_Magnussen con tiempo 2.9
+Mejor Sector 1: Kevin_Magnussen con tiempo 1
+Mejor Sector 2: Kevin_Magnussen con tiempo 0.9
+Mejor Sector 3: Kevin_Magnussen con tiempo 1
+
+Información de cada piloto:
+Posición: 1, Piloto: Kevin_Magnussen, Tiempo Total: 2.9
+Posición: 2, Piloto: Lewis_Hamilton, Tiempo Total: 3.66
+Posición: 3, Piloto: Charles_Leclerc, Tiempo Total: 3.69
+Posición: 4, Piloto: Max_Verstappen, Tiempo Total: 3.72
+Posición: 5, Piloto: Fernando_Alonso, Tiempo Total: 3.72
+Posición: 6, Piloto: Lando_Norris, Tiempo Total: 3.72
+Posición: 7, Piloto: Valtteri_Bottas, Tiempo Total: 3.72
+Posición: 8, Piloto: Alex_Albon, Tiempo Total: 3.72
+Posición: 9, Piloto: Pierre_Gasly, Tiempo Total: 3.75
+Posición: 10, Piloto: Nico_Hulkenberg, Tiempo Total: 3.75
+Posición: 11, Piloto: George_Russell, Tiempo Total: 3.75
+Posición: 12, Piloto: Daniel_Ricciardo, Tiempo Total: 3.75
+Posición: 13, Piloto: Carlos_Sainz, Tiempo Total: 3.78
+Posición: 14, Piloto: Esteban_Ocon, Tiempo Total: 3.78
+Posición: 15, Piloto: Yuki_Tsunoda, Tiempo Total: 3.78
+Posición: 16, Piloto: Guanyu_Zhou, Tiempo Total: 3.81
+Posición: 17, Piloto: Lance_Stroll, Tiempo Total: 3.81
+Posición: 18, Piloto: Sergio_Pérez, Tiempo Total: 3.81
+Posición: 19, Piloto: Logan_Sargeant, Tiempo Total: 3.81
+Posición: 20, Piloto: Oscar_Piastri, Tiempo Total: 3.81
