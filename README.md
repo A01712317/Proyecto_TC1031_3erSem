@@ -17,27 +17,6 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 ## Competencias 
 
-### SICT0303: Implementa acciones científicas
-
-#### Mecanismos de Escritura en Archivos
-
-
----
-
-Estas adiciones aseguran que el README documente completamente la funcionalidad y la eficiencia del programa, proporcionando claridad sobre la complejidad y la utilidad de cada componente.
-
-### SICT0302B: Toma decisiones
-
-#### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
-- **Estructura de Datos Utilizada**: Se utilizó un `vector` para almacenar los objetos `Piloto`. Esta estructura es adecuada para manejar una lista de elementos que se pueden acceder y modificar mediante índices, lo cual es necesario para ordenar y evaluar los tiempos de los pilotos.
-  
-#### Selecciona un algoritmo de ordenamiento adecuado al problema
-- **Algoritmo de Ordenamiento**: Se implementó el algoritmo de **merge sort** en la función `determinarPosiciones`. Este algoritmo tiene una complejidad de \( O(n \log n) \), lo que lo hace eficiente para ordenar grandes conjuntos de datos como los tiempos de vuelta de los pilotos.
-
-#### Usa un árbol adecuado para resolver un problema
-- **Árbol Utilizado**: Se utilizó un **árbol binario de búsqueda** (`BST`) para almacenar y organizar los tiempos de vuelta de los pilotos.
-- **Justificación**: El BST permite una búsqueda eficiente, así como una forma ordenada de recorrer y visualizar los tiempos totales de los pilotos en diferentes formas (preorden, inorden, postorden y por niveles), facilitando el análisis y consulta de datos.
-
 ### SICT0301B: Evalúa los componentes
 
 - **Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`merge sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n \log n)\), que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
@@ -52,17 +31,13 @@ Estas adiciones aseguran que el README documente completamente la funcionalidad 
 #### Análisis de Complejidad Completo
 
 ##### 1. **Estructuras de Datos** (`vector`, `BST`)
-   
+  - Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
    - **`vector`**:
      - **Acceso**: \( O(1) \) ya que `vector` permite acceso directo a los elementos mediante índices.
      - **Inserción**:
        - **Mejor caso**: \( O(1) \) si la capacidad no se incrementa.
        - **Peor caso**: \( O(n) \) al duplicarse la capacidad y copiar los elementos a una nueva ubicación en memoria.
        - **Caso promedio**: \( O(1) \) ya que el redimensionamiento es poco frecuente debido a la política de duplicación.
-     - **Ordenamiento (merge sort)**:
-       - **Mejor caso**: \( O(n \log n) \), pues en `merge sort` el caso ideal sigue siendo \( O(n \log n) \).
-       - **Peor caso**: \( O(n \log n) \), ya que el algoritmo sigue dividiendo y mezclando segmentos en cada nivel de recursión.
-       - **Caso promedio**: \( O(n \log n) \), manteniendo complejidad constante para cualquier entrada.
 
    - **BST**:
      - **Búsqueda**:
@@ -71,13 +46,56 @@ Estas adiciones aseguran que el README documente completamente la funcionalidad 
        - **Caso promedio**: \( O(\log n) \).
      - **Inserción y eliminación**: similar a la búsqueda, con complejidades de \( O(\log n) \) en el caso balanceado y \( O(n) \) en el caso de un árbol desbalanceado.
 
-##### 2. **Algoritmo de Ordenamiento** (`merge sort`)
+##### 2. **Algoritmo de Ordenamiento** (`insertion sort`)
+  - Se escogió este algoritmo debido a que en la F1 cada vez que se registra una nueva vuelta, esta se ordena con los mejores resultados del resto de pilotos
+    - **Mejor caso**: \( O(n) \), ya que si la lista ya está ordenada, solo se realiza una pasada sin movimientos.
+    - **Peor caso**: \( O(n^2) \), cuando la lista está en orden inverso y cada elemento debe moverse a la primera posición.
+    - **Caso promedio**: \( O(n^2) \), debido a que en promedio, cada elemento debe moverse la mitad de la lista.
+---
 
-   - **Mejor caso**: \( O(n \log n) \), pues `merge sort` es un algoritmo estable que mantiene una complejidad constante.
-   - **Peor caso**: \( O(n \log n) \), con divisiones y mezclas en cada nivel del árbol de recursión.
-   - **Caso promedio**: \( O(n \log n) \), dado que la estructura de merge sort permanece consistente independientemente del orden de entrada.
+##### Análisis de Complejidad del `main`
+
+  El `main` combina múltiples operaciones que afectan su complejidad. A continuación se desglosan:
+  
+  ### 1. Lectura del archivo
+  - Complejidad: \( O(n) \), donde \( n \) es el número de pilotos.
+  
+  ### 2. Determinación de posiciones (`insertion sort`)
+  - Complejidad:
+    - **Mejor caso**: \( O(n) \), si los tiempos ya están ordenados.
+    - **Peor caso**: \( O(n^2) \), si los tiempos están en orden inverso.
+    - **Caso promedio**: \( O(n^2) \).
+  
+  ### 3. Cálculos individuales (`vuelta rápida`, `mejorSector1`, etc.)
+  - Complejidad: \( O(n) \) por cada cálculo. En total: \( O(n) \).
+  
+  ### 4. Construcción del BST
+  - Complejidad promedio: \( O(n \log n) \).
+  - Complejidad en el peor caso: \( O(n^2) \), si el árbol está desbalanceado.
+  
+  ### 5. Escritura de resultados
+  - Complejidad: \( O(n) \).
+  
+  ### Complejidad total
+  - Mejor caso: \( O(n^2) \), dominado por el ordenamiento.
+  - Peor caso: \( O(n^2 + n^2) = O(n^2) \).
 
 ---
+
+
+### SICT0302B: Toma decisiones
+
+#### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
+- **Estructura de Datos Utilizada**: Se utilizó un `vector` para almacenar los objetos `Piloto`. Esta estructura es adecuada para manejar una lista de elementos que se pueden acceder y modificar mediante índices, lo cual es necesario para ordenar y evaluar los tiempos de los pilotos.
+  
+#### Selecciona un algoritmo de ordenamiento adecuado al problema
+- **Algoritmo de Ordenamiento**: Se implementó el algoritmo de **merge sort** en la función `determinarPosiciones`. Este algoritmo tiene una complejidad de \( O(n \log n) \), lo que lo hace eficiente para ordenar grandes conjuntos de datos como los tiempos de vuelta de los pilotos.
+
+#### Usa un árbol adecuado para resolver un problema
+- **Árbol Utilizado**: Se utilizó un **árbol binario de búsqueda** (`BST`) para almacenar y organizar los tiempos de vuelta de los pilotos.
+- **Justificación**: El BST permite una búsqueda eficiente, así como una forma ordenada de recorrer y visualizar los tiempos totales de los pilotos en diferentes formas (preorden, inorden, postorden y por niveles), facilitando el análisis y consulta de datos.
+
+
 
 ### SICT0303B: Implementa acciones científicas
 
