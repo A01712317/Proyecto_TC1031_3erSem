@@ -100,8 +100,8 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 ### SICT0303B: Implementa acciones científicas
 
 #### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
-- **Consulta de Sectores y Vuelta Rápida**: Las funciones para determinar los mejores tiempos por sector y el piloto con la vuelta rápida se implementaron utilizando el algoritmo `min_element`, asegurando una consulta eficiente en \( O(n) \).
-- **Recorridos del BST**: Se implementaron recorridos útiles (preorden, inorden, postorden y por niveles) para extraer información de forma organizada y significativa.
+- **Consulta de Sectores y Vuelta Rápida**: Las funciones para determinar los mejores tiempos por sector y el piloto con la vuelta rápida se implementaron utilizando el algoritmo `min_element`, asegurando una consulta eficiente y sencilla por la biblioteca algorithm en \( O(n) \).
+- **Recorridos del BST**: Se implementaron recorridos útiles (preorden, inorden, postorden y por niveles) para extraer información de forma organizada y significativa. Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
 
 #### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa.
 - **Lectura de Archivos**: Se implementó la lectura de archivos de texto para cargar la información de los pilotos, lo que permite una fácil actualización y modificación de los datos sin cambiar el código. Esto asegura la flexibilidad y reutilización del programa.
@@ -142,4 +142,3 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 --- 
 
-Este README proporciona una guía completa para entender la estructura, funcionamiento y ejecución del programa de clasificación de Fórmula 1, incluyendo el análisis de complejidad para cada componente utilizado.
