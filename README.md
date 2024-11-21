@@ -19,7 +19,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 ### SICT0301B: Evalúa los componentes
 
-- **Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`merge sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n \log n)\), que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
+- **Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`insertion sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n^2)\) en el peor y caso promedio, que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
 
 #### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
 - **Casos de Prueba**:
