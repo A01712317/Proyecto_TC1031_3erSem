@@ -177,7 +177,7 @@ Posici├│n: 20, Piloto: Oscar_Piastri, Tiempo Total: 3.81
      - **Inserción y eliminación**: similar a la búsqueda, con complejidades de \( O(\log n) \) en el caso balanceado y \( O(n) \) en el caso de un árbol desbalanceado.
        
 ### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
-El `main` combina múltiples todas las operaciones que afectan la complejidad del programa. A continuación se desglosan:
+El `main` combina todas las operaciones que afectan la complejidad del programa. A continuación se desglosan:
   
   #### 1. Lectura del archivo
   - Complejidad: \( O(n) \), donde \( n \) es el número de pilotos.
