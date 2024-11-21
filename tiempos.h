@@ -16,6 +16,7 @@ private:
 public:
     Tiempo(double t1, double t2, double t3) : sector_1(t1), sector_2(t2), sector_3(t3), tiempo(t1 + t2 + t3) {}
     double getTiempo() const { return tiempo; }
+    void setTiempoTotal(double t) { tiempo = t; }
 
     void setSector1(double t1) { sector_1 = t1; updateTiempo(); }
     void setSector2(double t2) { sector_2 = t2; updateTiempo(); }

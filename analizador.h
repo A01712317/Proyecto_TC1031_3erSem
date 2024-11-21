@@ -2,6 +2,7 @@
 #define ANALIZADOR_H
 
 #include "piloto.h"
+#include "tiempos.h"
 #include <algorithm>
 #include <limits>
 #include <vector>
@@ -10,7 +11,7 @@
 class Analizador {
 public:
     static void determinarPosiciones(vector<Piloto>& pilotos) {
-        mergeSort(pilotos, 0, pilotos.size() - 1);
+        insertionSort(pilotos);
 
         // Eliminar pilotos duplicados
         eliminarDuplicados(pilotos);
@@ -21,75 +22,80 @@ public:
     }
 
     static const Piloto* vueltaRapida(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getTiempoTotal() < b.getTiempoTotal();
-        }));
+        return &pilotos.front();
     }
 
+
     static const Piloto* mejorSector1(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector1() < b.getSector1();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector1(), &piloto);
+    }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
     }
 
     static const Piloto* mejorSector2(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector2() < b.getSector2();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector2(), &piloto);
+    }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
     }
 
     static const Piloto* mejorSector3(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector3() < b.getSector3();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector3(), &piloto);
     }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
+    }
+
+// Sobrecarga de insertionSort para trabajar con pares
+template <typename T>
+static void insertionSort(vector<pair<double, T>>& elementos) {
+    for (size_t i = 1; i < elementos.size(); ++i) {
+        auto key = elementos[i];
+        int j = i - 1;
+
+        // Comparar por el primer elemento del par (el tiempo del sector)
+        while (j >= 0 && elementos[j].first > key.first) {
+            elementos[j + 1] = elementos[j];
+            --j;
+        }
+        elementos[j + 1] = key;
+    }
+}
+
 
 private:
-    static void merge(vector<Piloto>& pilotos, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    static void insertionSort(vector<Piloto>& pilotos) {
+        for (size_t i = 1; i < pilotos.size(); ++i) {
+            Piloto key = pilotos[i];
+            int j = i - 1;
 
-        vector<Piloto> L(n1);
-        vector<Piloto> R(n2);
-
-        for (int i = 0; i < n1; ++i)
-            L[i] = pilotos[left + i];
-        for (int j = 0; j < n2; ++j)
-            R[j] = pilotos[mid + 1 + j];
-
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i].getTiempoTotal() <= R[j].getTiempoTotal()) {
-                pilotos[k] = L[i];
-                ++i;
-            } else {
-                pilotos[k] = R[j];
-                ++j;
+            while (j >= 0 && pilotos[j].getTiempoTotal() > key.getTiempoTotal()) {
+                pilotos[j + 1] = pilotos[j];
+                --j;
             }
-            ++k;
-        }
-
-        while (i < n1) {
-            pilotos[k] = L[i];
-            ++i;
-            ++k;
-        }
-
-        while (j < n2) {
-            pilotos[k] = R[j];
-            ++j;
-            ++k;
-        }
-    }
-
-    static void mergeSort(vector<Piloto>& pilotos, int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-
-            mergeSort(pilotos, left, mid);
-            mergeSort(pilotos, mid + 1, right);
-
-            merge(pilotos, left, mid, right);
+            pilotos[j + 1] = key;
         }
     }
 
@@ -110,7 +116,7 @@ private:
         }
 
         // Ordenar nuevamente después de eliminar duplicados
-        mergeSort(pilotos, 0, pilotos.size() - 1);
+        insertionSort(pilotos);
     }
 };
 
