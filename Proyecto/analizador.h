@@ -10,7 +10,7 @@
 class Analizador {
 public:
     static void determinarPosiciones(vector<Piloto>& pilotos) {
-        mergeSort(pilotos, 0, pilotos.size() - 1);
+        insertionSort(pilotos);
 
         // Eliminar pilotos duplicados
         eliminarDuplicados(pilotos);
@@ -45,51 +45,16 @@ public:
     }
 
 private:
-    static void merge(vector<Piloto>& pilotos, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    static void insertionSort(vector<Piloto>& pilotos) {
+        for (size_t i = 1; i < pilotos.size(); ++i) {
+            Piloto key = pilotos[i];
+            int j = i - 1;
 
-        vector<Piloto> L(n1);
-        vector<Piloto> R(n2);
-
-        for (int i = 0; i < n1; ++i)
-            L[i] = pilotos[left + i];
-        for (int j = 0; j < n2; ++j)
-            R[j] = pilotos[mid + 1 + j];
-
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i].getTiempoTotal() <= R[j].getTiempoTotal()) {
-                pilotos[k] = L[i];
-                ++i;
-            } else {
-                pilotos[k] = R[j];
-                ++j;
+            while (j >= 0 && pilotos[j].getTiempoTotal() > key.getTiempoTotal()) {
+                pilotos[j + 1] = pilotos[j];
+                --j;
             }
-            ++k;
-        }
-
-        while (i < n1) {
-            pilotos[k] = L[i];
-            ++i;
-            ++k;
-        }
-
-        while (j < n2) {
-            pilotos[k] = R[j];
-            ++j;
-            ++k;
-        }
-    }
-
-    static void mergeSort(vector<Piloto>& pilotos, int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-
-            mergeSort(pilotos, left, mid);
-            mergeSort(pilotos, mid + 1, right);
-
-            merge(pilotos, left, mid, right);
+            pilotos[j + 1] = key;
         }
     }
 
@@ -110,7 +75,7 @@ private:
         }
 
         // Ordenar nuevamente después de eliminar duplicados
-        mergeSort(pilotos, 0, pilotos.size() - 1);
+        insertionSort(pilotos);
     }
 };
 
