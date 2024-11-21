@@ -148,19 +148,19 @@ Posici├│n: 20, Piloto: Oscar_Piastri, Tiempo Total: 3.81
 
 ## Competencias 
 
-### SICT0301: Evalúa los componentes
+## SICT0301: Evalúa los componentes
 
 - Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`insertion sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n^2)\) en el peor y caso promedio, que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
 
-#### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
-### **Algoritmo de Ordenamiento** (`insertion sort`)
+### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+#### **Algoritmo de Ordenamiento** (`insertion sort`)
   - Se escogió este algoritmo debido a que en la F1 cada vez que se registra una nueva vuelta, esta se ordena con los mejores resultados del resto de pilotos
     - **Mejor caso**: \( O(n) \), ya que si la lista ya está ordenada, solo se realiza una pasada sin movimientos.
     - **Peor caso**: \( O(n^2) \), cuando la lista está en orden inverso y cada elemento debe moverse a la primera posición.
     - **Caso promedio**: \( O(n^2) \), debido a que en promedio, cada elemento debe moverse la mitad de la lista.
    
-#### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
-### **Estructuras de Datos** (`vector`, `BST`)
+### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
+#### **Estructuras de Datos** (`vector`, `BST`)
   - Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
    - **`vector`**:
      - **Acceso**: \( O(1) \) ya que `vector` permite acceso directo a los elementos mediante índices.
@@ -176,81 +176,58 @@ Posici├│n: 20, Piloto: Oscar_Piastri, Tiempo Total: 3.81
        - **Caso promedio**: \( O(\log n) \).
      - **Inserción y eliminación**: similar a la búsqueda, con complejidades de \( O(\log n) \) en el caso balanceado y \( O(n) \) en el caso de un árbol desbalanceado.
        
-#### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 El `main` combina múltiples todas las operaciones que afectan la complejidad del programa. A continuación se desglosan:
   
-  ### 1. Lectura del archivo
+  #### 1. Lectura del archivo
   - Complejidad: \( O(n) \), donde \( n \) es el número de pilotos.
   
-  ### 2. Determinación de posiciones (`insertion sort`)
+  #### 2. Determinación de posiciones (`insertion sort`)
   - Complejidad:
     - **Mejor caso**: \( O(n) \), si los tiempos ya están ordenados.
     - **Peor caso**: \( O(n^2) \), si los tiempos están en orden inverso.
     - **Caso promedio**: \( O(n^2) \).
   
-  ### 3. Cálculos individuales (`vuelta rápida`, `mejorSector1`, etc.)
+  #### 3. Cálculos individuales (`vuelta rápida`, `mejorSector1`, etc.)
   - Complejidad: \( O(n) \) por cada cálculo. En total: \( O(n) \).
   
-  ### 4. Construcción del BST
+  #### 4. Construcción del BST
   - Complejidad promedio: \( O(n \log n) \).
   - Complejidad en el peor caso: \( O(n^2) \), si el árbol está desbalanceado.
   
-  ### 5. Escritura de resultados
+  #### 5. Escritura de resultados
   - Complejidad: \( O(n) \).
   
-  ### Complejidad total
+  #### Complejidad total
   - Mejor caso: \( O(n^2) \), dominado por el ordenamiento.
   - Peor caso: \( O(n^2 + n^2) = O(n^2) \).
 ---
 
 
-### SICT0302: Toma decisiones
+## SICT0302: Toma decisiones
   
-#### Selecciona un algoritmo de ordenamiento adecuado al problema
+### Selecciona un algoritmo de ordenamiento adecuado al problema
 - **Algoritmo de Ordenamiento**: Se implementó el algoritmo de **insertion sort** en la función `determinarPosiciones`. Este algoritmo tiene una complejidad de \( 𝑂(𝑛2) \), lo que lo hace eficiente para ordenar grandes conjuntos de datos como los tiempos de vuelta de los pilotos.
 - Se escogió este algoritmo debido a que en la F1 cada vez que se registra una nueva vuelta, esta se ordena con los mejores resultados del resto de pilotos
 
-#### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
+### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
 - **Estructura de Datos Utilizada**: Se utilizó un `vector` para almacenar los objetos `Piloto`. Esta estructura es adecuada para manejar una lista de elementos que se pueden acceder y modificar mediante índices, lo cual es necesario para ordenar y evaluar los tiempos de los pilotos.
 - **Árbol Utilizado**: Se utilizó un **árbol binario de búsqueda** (`BST`) para almacenar y organizar los tiempos de vuelta de los pilotos.
 - **Justificación**: Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
 
 
 
-### SICT0303: Implementa acciones científicas
+## SICT0303: Implementa acciones científicas
 
-#### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
+### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
 - **Consulta de Sectores y Vuelta Rápida**: Las funciones para determinar los mejores tiempos por sector y el piloto con la vuelta rápida se implementaron utilizando el algoritmo `min_element`, asegurando una consulta eficiente y sencilla por la biblioteca algorithm en \( O(n) \).
 - **Recorridos del BST**: Se implementaron recorridos útiles (preorden, inorden, postorden y por niveles) para extraer información de forma organizada y significativa. Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
 
-#### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa.
+### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa.
 - **Lectura de Archivos**: Se implementó la lectura de archivos de texto para cargar la información de los pilotos, lo que permite una fácil actualización y modificación de los datos sin cambiar el código. Esto asegura la flexibilidad y reutilización del programa.
 
-#### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa.
+### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa.
 - **El programa implementa mecanismos para escribir los datos procesados en un archivo de salida `resultados.txt`, donde se guarda la información de los mejores tiempos por sector y el listado completo de los pilotos, sus tiempos y posiciones. Este mecanismo permite el almacenamiento de resultados de manera organizada y reutilizable, facilitando su uso posterior para el análisis o para compartir los resultados.
-
-
----
-
-## Instrucciones para ejecutar el programa
-
-1. **Compilación**:
-   - Asegúrate de tener un compilador compatible con C++11 o superior. Utiliza el siguiente comando para compilar:
-     ```bash
-     g++ -std=c++11 main.cpp -o calculos
-     ```
-
-2. **Ejecución**:
-
-    ```bash
-     ./calculos
-     ```
-   
-
-    
-
-
-   - Los resultados se mostrarán en la terminal, con los pilotos ordenados por tiempos y la información adicional solicitada (mejores sectores, vuelta rápida, posiciones). 
 
 --- 
 
