@@ -1,5 +1,3 @@
-Aquí tienes el análisis de complejidad agregado al README:
-
 ---
 
 # Programa de Clasificación de Fórmula 1
