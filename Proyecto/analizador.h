@@ -2,6 +2,7 @@
 #define ANALIZADOR_H
 
 #include "piloto.h"
+#include "tiempos.h"
 #include <algorithm>
 #include <limits>
 #include <vector>
@@ -21,28 +22,68 @@ public:
     }
 
     static const Piloto* vueltaRapida(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getTiempoTotal() < b.getTiempoTotal();
-        }));
+        return &pilotos.front();
     }
 
+
     static const Piloto* mejorSector1(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector1() < b.getSector1();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector1(), &piloto);
+    }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
     }
 
     static const Piloto* mejorSector2(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector2() < b.getSector2();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector2(), &piloto);
+    }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
     }
 
     static const Piloto* mejorSector3(const vector<Piloto>& pilotos) {
-        return &(*min_element(pilotos.begin(), pilotos.end(), [](const Piloto& a, const Piloto& b) {
-            return a.getSector3() < b.getSector3();
-        }));
+    // Crear un vector de pares (sector1, puntero a Piloto)
+    vector<pair<double, const Piloto*>> sectores;
+    for (const auto& piloto : pilotos) {
+        sectores.emplace_back(piloto.getSector3(), &piloto);
     }
+
+    // Ordenar el vector de sectores usando insertionSort
+    insertionSort(sectores);
+
+    // Retornar el piloto asociado al mejor tiempo (primer elemento después de ordenar)
+    return sectores.front().second;
+    }
+
+// Sobrecarga de insertionSort para trabajar con pares
+template <typename T>
+static void insertionSort(vector<pair<double, T>>& elementos) {
+    for (size_t i = 1; i < elementos.size(); ++i) {
+        auto key = elementos[i];
+        int j = i - 1;
+
+        // Comparar por el primer elemento del par (el tiempo del sector)
+        while (j >= 0 && elementos[j].first > key.first) {
+            elementos[j + 1] = elementos[j];
+            --j;
+        }
+        elementos[j + 1] = key;
+    }
+}
+
 
 private:
     static void insertionSort(vector<Piloto>& pilotos) {
