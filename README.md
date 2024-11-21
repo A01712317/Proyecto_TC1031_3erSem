@@ -17,7 +17,7 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 
 ### SICT0301B: Evalúa los componentes
 
-- **Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`insertion sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n^2)\) en el peor y caso promedio, que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
+- Se ha realizado un análisis de complejidad para cada componente del programa, incluido el `vector`, el árbol binario de búsqueda (`BST`), y el algoritmo de ordenamiento (`insertion sort`), detallando el mejor, peor, y caso promedio. La complejidad final del programa queda determinada por el tiempo de ejecución del algoritmo de ordenamiento en \(O(n^2)\) en el peor y caso promedio, que domina el tiempo de búsqueda en el BST y el acceso a los elementos en el `vector`.
 
 #### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa.
 - **Casos de Prueba**:
@@ -87,11 +87,12 @@ Este programa en C++ lee un archivo de texto que contiene los detalles de varios
 - **Estructura de Datos Utilizada**: Se utilizó un `vector` para almacenar los objetos `Piloto`. Esta estructura es adecuada para manejar una lista de elementos que se pueden acceder y modificar mediante índices, lo cual es necesario para ordenar y evaluar los tiempos de los pilotos.
   
 #### Selecciona un algoritmo de ordenamiento adecuado al problema
-- **Algoritmo de Ordenamiento**: Se implementó el algoritmo de **merge sort** en la función `determinarPosiciones`. Este algoritmo tiene una complejidad de \( O(n \log n) \), lo que lo hace eficiente para ordenar grandes conjuntos de datos como los tiempos de vuelta de los pilotos.
+- **Algoritmo de Ordenamiento**: Se implementó el algoritmo de **insertion sort** en la función `determinarPosiciones`. Este algoritmo tiene una complejidad de \( 𝑂(𝑛2) \), lo que lo hace eficiente para ordenar grandes conjuntos de datos como los tiempos de vuelta de los pilotos.
+- Se escogió este algoritmo debido a que en la F1 cada vez que se registra una nueva vuelta, esta se ordena con los mejores resultados del resto de pilotos
 
 #### Usa un árbol adecuado para resolver un problema
 - **Árbol Utilizado**: Se utilizó un **árbol binario de búsqueda** (`BST`) para almacenar y organizar los tiempos de vuelta de los pilotos.
-- **Justificación**: El BST permite una búsqueda eficiente, así como una forma ordenada de recorrer y visualizar los tiempos totales de los pilotos en diferentes formas (preorden, inorden, postorden y por niveles), facilitando el análisis y consulta de datos.
+- **Justificación**: Se escogió esta estructura de datos debido a que tiene una complejidad muy sencilla, y que al hacer un recorrido inorder o preorder da los tiempos en orden de menor a mayor, pero en este caso si 2 o mas pilotos hicieron el mismo tiempo tendremos primero el que hizo el tiempo primero
 
 
 
